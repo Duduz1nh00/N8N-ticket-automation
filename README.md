@@ -14,13 +14,13 @@ Utilizando **Engenharia de Prompt** e um modelo de linguagem ultrarrápido (**Ll
 
 ## 🏗️ Arquitetura do Workflow
 
-```mermaid
-flowchart LR
-    A[📋 n8n Form Trigger<br>Entrada de Dados] --> B[🧠 Basic LLM Chain<br>Llama 3 via Groq]
-    B --> C[(📊 Google Sheets<br>Registro Geral 100%)]
-    C --> D{Urgência == 'Alta'?}
-    D -- Sim [TRUE] --> E[🚨 Gmail<br>Alerta Crítico Imediato]
-    D -- Não [FALSE] --> F[🏁 Fim da Execução]
+```text
+[Form Trigger (Entrada)] ──> [Groq / Llama 3 (IA)] ──> [Google Sheets (100%)] ──> [If: Urgência == 'Alta'?]
+                                                                                            │
+                                                                                    ┌───────┴───────┐
+                                                                                 [TRUE]          [FALSE]
+                                                                                    │               │
+                                                                              [Alerta Gmail]    [Fim do Fluxo]
 
 
 📝 Planejamento e Engenharia de Prompt (Passo a Passo)
